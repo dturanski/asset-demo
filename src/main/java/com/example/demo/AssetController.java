@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.domain.Asset;
 import com.example.demo.repository.AssetsRepository;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,13 +39,13 @@ public class AssetController {
 	}
 
 	@DeleteMapping("/assets/{id}")
-	public HttpStatus deleteAsset(long id) {
+	public ResponseEntity<Object> deleteAsset(@PathVariable("id") long id) {
 		Asset asset = assetsRepository.findOne(id);
 		if (asset == null) {
-			return HttpStatus.NOT_FOUND;
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 
 		assetsRepository.delete(id);
-		return HttpStatus.NO_CONTENT;
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

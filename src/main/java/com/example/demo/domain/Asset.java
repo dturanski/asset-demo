@@ -22,6 +22,10 @@ public class Asset {
 		this.macAddress = macAddress;
 	}
 
+	public Asset() {
+
+	}
+
 	public String getIpAddress() {
 		return ipAddress;
 	}
