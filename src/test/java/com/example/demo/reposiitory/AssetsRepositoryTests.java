@@ -30,6 +30,23 @@ public class AssetsRepositoryTests {
 	@Test
 	public void testDelete() {
 		Asset asset = new Asset("127.0.0.1", "ac:bc:32:ab:e7:c7");
-		assert()
+		assertThat(assetsRepository.findAll()).isEmpty();
+		assetsRepository.save(asset);
+		assertThat(assetsRepository.findAll()).hasSize(1);
+		assetsRepository.delete(asset);
+		assertThat(assetsRepository.findAll()).isEmpty();
+	}
+
+	@Test
+	public void testUpdate() {
+		Asset asset = new Asset("127.0.0.1", "ac:bc:32:ab:e7:c7");
+		Asset original = assetsRepository.save(asset);
+		original.setIpAddress("10.52.1.3");
+		Asset actual = assetsRepository.save(original);
+		assertThat(actual.getId()).isEqualTo(original.getId());
+		assertThat(actual.getIpAddress()).isEqualTo("10.52.1.3");
+		assertThat(actual.getMacAddress()).isEqualTo("ac:bc:32:ab:e7:c7");
+
+
 	}
 }

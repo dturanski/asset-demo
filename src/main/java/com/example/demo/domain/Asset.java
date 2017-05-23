@@ -34,8 +34,12 @@ public class Asset {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public String getMacAddress() {
+		return macAddress;
+	}
+
+	public void setMacAddress(String macAddress) {
+		this.macAddress = macAddress;
 	}
 
 	@Override
