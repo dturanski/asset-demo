@@ -97,6 +97,11 @@
 			<name>Spring Snapshots</name>
 			<url>https://repo.spring.io/libs-milestone</url>
 		</repository>
+		<repository>
+			<id>spring-release</id>
+			<name>Spring Release</name>
+			<url>https://repo.spring.io/libs-release</url>
+		</repository>
 	</repositories>
 
 </project>
